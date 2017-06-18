@@ -1024,11 +1024,11 @@ cpdefine("inline:com-chilipeppr-widget-grbl", ["chilipeppr_ready", "jquerycookie
             this.currentUnitSystem = unitSystem;
             if (this.isConnected()) {
                 if (unitSystem == 'G21' && this.config[13][0] != 1) {
-                    this.sendCode(String.fromCharCode(36) + "13=1\n" + String.fromCharCode(36) + String.fromCharCode(36) + "\n");
+                    this.sendCode(String.fromCharCode(36) + "13=0\n" + String.fromCharCode(36) + String.fromCharCode(36) + "\n");
                 }
 
                 else if (unitSystem == 'G20' && this.config[13][0] != 0) {
-                    this.sendCode(String.fromCharCode(36) + "13=0\n" + String.fromCharCode(36) + String.fromCharCode(36) + "\n");
+                    this.sendCode(String.fromCharCode(36) + "13=1\n" + String.fromCharCode(36) + String.fromCharCode(36) + "\n");
                 }
             }
             if (isDirty) {
