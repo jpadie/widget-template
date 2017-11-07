@@ -158,7 +158,7 @@ cpdefine("inline:com-chilipeppr-widget-grbl", ["chilipeppr_ready", "jquerycookie
         controller_units: null,
         status: "Offline",
         version: "",
-        widgetVersion: '2017-09-03h',
+        widgetVersion: '$$$widgetVersion$$$',
         q_count: 0,
         alarm: false,
         spindleSpeed: 'Off',

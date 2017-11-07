@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 
-    <title>Widget / GRBL 1.1 compatibility test</title>
+    <title>widget</title>
 
     <!-- ChiliPeppr is based on bootstrap CSS. -->
     <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
@@ -13,8 +13,11 @@
     ChiliPeppr's dependency system works as it's based on require.js. -->
     <script type='text/javascript' src="//i2dcui.appspot.com/js/require.js"></script>
 
+    <!-- widget.css DON'T REMOVE -->
     <style type='text/css'>
-#com-chilipeppr-widget-grbl-body {
+        /* widget.css will get inlined here by runme.js. don't remove this comment or inlining will fail. */
+    </style>
+    <style type='text/css'>#com-chilipeppr-widget-grbl-body {
     /*padding:0; */
 }
 .com-chilipeppr-interface-cnccontroller-stat .col{
@@ -117,12 +120,16 @@
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
     border-radius: 4px;
-}
-    </style>
+}</style>
+    <!-- DON'T REMOVE end widget.css -->
 
+    <!-- widget.js DON'T REMOVE -->
     <script type='text/javascript'>
-    //<![CDATA[
-/* global $, cprequire_test, cpdefine, chilipeppr requirejs */
+        //<![CDATA[
+        /* widget.js will get inlined here by runme.js. don't remove this comment or inlining will fail. */
+        //]]>
+    </script>
+    <script type='text/javascript'>/* global $, cprequire_test, cpdefine, chilipeppr requirejs */
 
 
 // Test this element. This code is auto-removed by the chilipeppr.load()
@@ -233,10 +240,10 @@ cpdefine("inline:com-chilipeppr-widget-grbl", ["chilipeppr_ready", "jquerycookie
         implements: {
             "com-chilipeppr-interface-cnccontroller": "The CNC Controller interface is a loosely defined set of publish/subscribe signals. The notion of an interface is taken from object-oriented programming like Java where an interface is defined and then specific implementations of the interface are created. For the sake of a Javascript mashup like what ChiliPeppr is, the interface is just a rule to follow to publish signals and subscribe to signals by different top-level names than the ID of the widget or element implementing the interface. Most widgets/elements will publish and subscribe on their own ID. In this widget we are publishing/subscribing on an interface name. If another controller like Grbl is defined by a member of the community beyond this widget for GRBL, this widget can be forked and used without other widgets needing to be changed and the user could pick a Grbl or GRBL implementation of the interface."
         },
-        url: "http://raw.githubusercontent.com/jpadie/grbl1-test-widget/master/auto-generated-widget.html", // The final URL of the working widget as a single HTML file with CSS and Javascript inlined. You can let runme.js auto fill this if you are using Cloud9.
-        githuburl: "http://github.com/jpadie/grbl1-test-widget", // The backing github repo
-        testurl: "http://grbl1_test_widget-jpadie.c9users.io/widget.html", // The standalone working widget so can view it working by itself
-        fiddleurl: "http://ide.c9.io/jpadie/grbl1_test_widget",
+        url: "(auto fill by runme.js)", // The final URL of the working widget as a single HTML file with CSS and Javascript inlined. You can let runme.js auto fill this if you are using Cloud9.
+        githuburl: "(auto fill by runme.js)", // The backing github repo
+        testurl: "(auto fill by runme.js)", // The standalone working widget so can view it working by itself
+        fiddleurl: "(auto fill by runme.js)",
         name: "Widget / GRBL 1.1 compatibility test",
         desc: "This widget shows the GRBL Buffer so other widgets can limit their flow of sending commands and other specific GRBL features.",
         publish: {
@@ -282,7 +289,7 @@ cpdefine("inline:com-chilipeppr-widget-grbl", ["chilipeppr_ready", "jquerycookie
         controller_units: null,
         status: "Offline",
         version: "",
-        widgetVersion: '2017-09-03h',
+        widgetVersion: '2017-11-7 15:25',
         q_count: 0,
         alarm: false,
         spindleSpeed: 'Off',
@@ -1103,7 +1110,7 @@ cpdefine("inline:com-chilipeppr-widget-grbl", ["chilipeppr_ready", "jquerycookie
                     that.commandQueue.push(cmd);
                 }
             });
-            // we need to re-send $ ??
+            // we need to re-send $$ ??
             // that.commandQueue.push(String.fromCharCode(36) + String.fromCharCode(36) + "\n");
             if (this.commandQueue.length == 0) {
                 this.hideConfigModal();
@@ -1261,7 +1268,7 @@ cpdefine("inline:com-chilipeppr-widget-grbl", ["chilipeppr_ready", "jquerycookie
                     }
                 }
                 that.sendCode("*status*\n"); //send request for initial status response.
-                that.sendCode("$\n"); //get grbl params
+                that.sendCode("$$\n"); //get grbl params
                 that.sendCode("?\n");
                 that.sendCode("$G\n");
                 //wait one additional second before checking for what reporting units grbl is configured for.
@@ -2448,9 +2455,8 @@ cpdefine("inline:com-chilipeppr-widget-grbl", ["chilipeppr_ready", "jquerycookie
         }
     };
 });
-
-    //]]>
-    </script>
+</script>
+    <!-- DON'T REMOVE end widget.js -->
 
 </head>
 
