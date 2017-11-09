@@ -289,7 +289,7 @@ cpdefine("inline:com-chilipeppr-widget-grbl", ["chilipeppr_ready", "jquerycookie
         controller_units: null,
         status: "Offline",
         version: "",
-        widgetVersion: '2017-11-7 15:25',
+        widgetVersion: '$$$widgetVersion$$$',
         q_count: 0,
         alarm: false,
         spindleSpeed: 'Off',
@@ -1146,7 +1146,7 @@ cpdefine("inline:com-chilipeppr-widget-grbl", ["chilipeppr_ready", "jquerycookie
             this.grblConsole("parsing settings", index, val);
 
             var obj = this.findConfigItem(index);
-            console.info('settings objects', obj);
+            //console.info('settings objects', obj);
             if (obj.hasOwnProperty('code')) {
                 this.config[index] = [val, obj.setting]; //save config value and description
             }

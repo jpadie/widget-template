@@ -1015,7 +1015,7 @@ cpdefine("inline:com-chilipeppr-widget-grbl", ["chilipeppr_ready", "jquerycookie
             this.grblConsole("parsing settings", index, val);
 
             var obj = this.findConfigItem(index);
-            console.info('settings objects', obj);
+            //console.info('settings objects', obj);
             if (obj.hasOwnProperty('code')) {
                 this.config[index] = [val, obj.setting]; //save config value and description
             }
