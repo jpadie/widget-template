@@ -2263,8 +2263,17 @@ cpdefine("inline:com-chilipeppr-widget-grbl", ["chilipeppr_ready", "jquerycookie
                     }, this);
                 }
             }
-            //console.error('grbl:',axes);
-            chilipeppr.publish("/com-chilipeppr-interface-cnccontroller/axes", axes);
+
+            var dirty=false;
+            if(!this.publishedAxes) this.publishedAxes={x:0,y:0,z:0};
+            for (const [key, value] of Object.entries(axes)) { 
+            	dirty|=this.publishedAxes[key]!=value;
+            	this.publishedAxes[key]=value;
+            }
+            if(dirty) {
+	            //console.error('grbl:',axes);
+  	          chilipeppr.publish("/com-chilipeppr-interface-cnccontroller/axes", axes);
+  	        }
         },
         plannerLastEvent: "resume",
         publishPlannerPause: function() {
