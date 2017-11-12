@@ -289,7 +289,7 @@ cpdefine("inline:com-chilipeppr-widget-grbl", ["chilipeppr_ready", "jquerycookie
         controller_units: null,
         status: "Offline",
         version: "",
-        widgetVersion: '2017-11-10 15:37',
+        widgetVersion: '2017-11-12 11:38',
         q_count: 0,
         alarm: false,
         spindleSpeed: 'Off',
@@ -864,7 +864,7 @@ cpdefine("inline:com-chilipeppr-widget-grbl", ["chilipeppr_ready", "jquerycookie
                     grblVersion: ""
                 };
             }
-            if(options.grblVersion == 'undefined') options.grblVersion = "";
+            if(typeof(options.grblVersion) == 'undefined') options.grblVersion = "";
             this.options = options;
             this.version = this.options.grblVersion;
             this.jogFeedRate = parseInt(this.options.jogFeedRate, 10);

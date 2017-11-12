@@ -733,7 +733,7 @@ cpdefine("inline:com-chilipeppr-widget-grbl", ["chilipeppr_ready", "jquerycookie
                     grblVersion: ""
                 };
             }
-            if(options.grblVersion == 'undefined') options.grblVersion = "";
+            if(typeof(options.grblVersion) == 'undefined') options.grblVersion = "";
             this.options = options;
             this.version = this.options.grblVersion;
             this.jogFeedRate = parseInt(this.options.jogFeedRate, 10);
