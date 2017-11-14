@@ -158,7 +158,7 @@ cpdefine("inline:com-chilipeppr-widget-grbl", ["chilipeppr_ready", "jquerycookie
         controller_units: null,
         status: "Offline",
         version: "",
-        widgetVersion: '2017-09-03h',
+        widgetVersion: '$$$widgetVersion$$$',
         q_count: 0,
         alarm: false,
         spindleSpeed: 'Off',
@@ -733,7 +733,7 @@ cpdefine("inline:com-chilipeppr-widget-grbl", ["chilipeppr_ready", "jquerycookie
                     grblVersion: ""
                 };
             }
-            if(options.grblVersion == 'undefined') options.grblVersion = "";
+            if(typeof(options.grblVersion) == 'undefined') options.grblVersion = "";
             this.options = options;
             this.version = this.options.grblVersion;
             this.jogFeedRate = parseInt(this.options.jogFeedRate, 10);
@@ -1015,7 +1015,7 @@ cpdefine("inline:com-chilipeppr-widget-grbl", ["chilipeppr_ready", "jquerycookie
             this.grblConsole("parsing settings", index, val);
 
             var obj = this.findConfigItem(index);
-            console.info('settings objects', obj);
+            //console.info('settings objects', obj);
             if (obj.hasOwnProperty('code')) {
                 this.config[index] = [val, obj.setting]; //save config value and description
             }
@@ -2132,8 +2132,17 @@ cpdefine("inline:com-chilipeppr-widget-grbl", ["chilipeppr_ready", "jquerycookie
                     }, this);
                 }
             }
-            //console.error('grbl:',axes);
-            chilipeppr.publish("/com-chilipeppr-interface-cnccontroller/axes", axes);
+
+            var dirty=false;
+            if(!this.publishedAxes) this.publishedAxes={x:0,y:0,z:0};
+            for (const [key, value] of Object.entries(axes)) { 
+            	dirty|=this.publishedAxes[key]!=value;
+            	this.publishedAxes[key]=value;
+            }
+            if(dirty) {
+	            //console.error('grbl:',axes);
+  	          chilipeppr.publish("/com-chilipeppr-interface-cnccontroller/axes", axes);
+  	        }
         },
         plannerLastEvent: "resume",
         publishPlannerPause: function() {
